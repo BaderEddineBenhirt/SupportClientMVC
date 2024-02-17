@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Session</title>
+    <link th:href="@{/css/output.css}" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
+<div class="flex items-center justify-center h-full">
+    <div class="bg-white w-full max-w-lg rounded-lg shadow">
+        <div class="border-b p-3">
+            <h5 class="font-bold text-gray-600">Chat</h5>
+        </div>
+        <div id="chatLog" class="p-3 max-h-96 overflow-y-scroll">
+            <!-- Dynamically append messages here -->
+            <!-- Example message -->
+            <div class="flex items-center space-x-2 mb-4">
+                <img src="https://i.pravatar.cc/50" alt="Avatar" class="w-10 h-10 rounded-full">
+                <span class="p-2 rounded bg-blue-500 text-white max-w-xs lg:max-w-md">Hey <p th:text="'Hello, ' + ${username} + '!'"></p> there!</span>
+            </div>
+            <!-- End of Example message -->
+        </div>
+        <div class="p-3 border-t">
+            <div class="flex">
+                <textarea id="messageArea" placeholder="Write your message..." class="block w-full text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"></textarea>
+                <button onclick="sendMessage();" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var currentUser = [[${username}]] ;
+    /*]]>*/
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
